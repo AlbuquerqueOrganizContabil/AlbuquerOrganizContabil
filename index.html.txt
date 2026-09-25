@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adriano & Albuquerque | Organização Contábil</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1a3a5c;
+      --primary-dark: #0f2640;
+      --accent: #2e86c1;
+      --accent-light: #d4e6f1;
+      --gold: #c9a84c;
+      --gray-bg: #f4f7fa;
+    }
+
+    * {
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: #fff;
+      color: #2c3e50;
+      scroll-behavior: smooth;
+    }
+
+    /* Navbar */
+    .navbar {
+      background-color: var(--primary);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+      padding: 0.8rem 0;
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: #fff !important;
+      letter-spacing: -0.3px;
+    }
+
+    .navbar-brand span {
+      color: var(--gold);
+    }
+
+    .nav-link {
+      color: rgba(255,255,255,0.85) !important;
+      font-weight: 500;
+      font-size: 0.92rem;
+      padding: 0.5rem 1rem !important;
+      transition: color 0.2s;
+    }
+
+    .nav-link:hover {
+      color: var(--gold) !important;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 60%, #1e4d7b 100%);
+      color: #fff;
+      padding: 100px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero h1 {
+      font-weight: 700;
+      font-size: 2.6rem;
+      line-height: 1.2;
+    }
+
+    .hero h1 span {
+      color: var(--gold);
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      max-width: 600px;
+      line-height: 1.7;
+    }
+
+    .hero .badge-crc {
+      background: rgba(201,168,76,0.15);
+      border: 1px solid rgba(201,168,76,0.4);
+      color: var(--gold);
+      padding: 0.4rem 1.2rem;
+      border-radius: 50px;
+      font-weight: 500;
+      font-size: 0.85rem;
+      display: inline-block;
+      margin-bottom: 1.2rem;
+    }
+
+    .btn-hero {
+      background-color: var(--gold);
+      color: var(--primary-dark);
+      font-weight: 600;
+      padding: 0.75rem 2rem;
+      border-radius: 50px;
+      border: none;
+      transition: all 0.3s;
+    }
+
+    .btn-hero:hover {
+      background-color: #dbb95a;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(201,168,76,0.3);
+      color: var(--primary-dark);
+    }
+
+    /* Section titles */
+    .section-title {
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-subtitle {
+      color: #6c7a89;
+      font-size: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-divider {
+      width: 60px;
+      height: 3px;
+      background: var(--gold);
+      margin: 0 auto 1.5rem;
+      border-radius: 2px;
+    }
+
+    /* Service cards */
+    .service-card {
+      background: #fff;
+      border: 1px solid #e8edf2;
+      border-radius: 12px;
+      padding: 2rem 1.5rem;
+      height: 100%;
+      transition: all 0.3s;
+      text-align: center;
+    }
+
+    .service-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 8px 30px rgba(46,134,193,0.1);
+      transform: translateY(-4px);
+    }
+
+    .service-icon {
+      width: 64px;
+      height: 64px;
+      background: var(--accent-light);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.2rem;
+      font-size: 1.6rem;
+      color: var(--accent);
+      transition: all 0.3s;
+    }
+
+    .service-card:hover .service-icon {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .service-card h5 {
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: var(--primary);
+      margin-bottom: 0.6rem;
+    }
+
+    .service-card p {
+      font-size: 0.9rem;
+      color: #6c7a89;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Info section */
+    .info-section {
+      background: var(--gray-bg);
+    }
+
+    .info-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.8rem;
+      border: 1px solid #e8edf2;
+      height: 100%;
+    }
+
+    .info-card h5 {
+      font-weight: 600;
+      color: var(--primary);
+      font-size: 1rem;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .info-card h5 i {
+      color: var(--gold);
+      font-size: 1.2rem;
+    }
+
+    .info-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .info-list li {
+      padding: 0.55rem 0;
+      border-bottom: 1px solid #f0f3f7;
+      font-size: 0.9rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .info-list li:last-child {
+      border-bottom: none;
+    }
+
+    .info-list .label {
+      color: #8a9bb0;
+      font-weight: 400;
+      flex-shrink: 0;
+    }
+
+    .info-list .value {
+      color: #2c3e50;
+      font-weight: 500;
+      text-align: right;
+    }
+
+    .status-active {
+      color: #27ae60;
+      font-weight: 600;
+    }
+
+    /* About section */
+    .about-text {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #4a5a6a;
+    }
+
+    .about-text strong {
+      color: var(--primary);
+    }
+
+    /* Contact section */
+    .contact-section {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #fff;
+      padding: 80px 0;
+    }
+
+    .contact-section .section-title {
+      color: #fff;
+    }
+
+    .contact-section .section-subtitle {
+      color: rgba(255,255,255,0.7);
+    }
+
+    .contact-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px;
+      padding: 1.5rem;
+      height: 100%;
+      transition: all 0.3s;
+      text-align: center;
+    }
+
+    .contact-card:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: var(--gold);
+    }
+
+    .contact-card i {
+      font-size: 1.8rem;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+
+    .contact-card h6 {
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+      color: rgba(255,255,255,0.6);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .contact-card p, .contact-card a {
+      color: #fff;
+      font-weight: 500;
+      font-size: 1rem;
+      margin: 0;
+      text-decoration: none;
+      word-break: break-word;
+    }
+
+    .contact-card a:hover {
+      color: var(--gold);
+    }
+
+    /* Map */
+    .map-wrapper {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    }
+
+    .map-wrapper iframe {
+      width: 100%;
+      height: 380px;
+      border: 0;
+      display: block;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--primary-dark);
+      color: rgba(255,255,255,0.6);
+      padding: 2rem 0;
+      font-size: 0.85rem;
+    }
+
+    footer strong {
+      color: var(--gold);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .hero {
+        padding: 70px 0 50px;
+      }
+      .section-title {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <i class="bi bi-calculator me-2"></i>Adriano <span>&</span> Albuquerque
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <i class="bi bi-list text-white fs-3"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#servicos">Atividades</a></li>
+        <li class="nav-item"><a class="nav-link" href="#informacoes">Informações</a></li>
+        <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container position-relative">
+    <div class="row align-items-center">
+      <div class="col-lg-7">
+        <div class="badge-crc">
+          <i class="bi bi-patch-check-fill me-1"></i>CRC: CE-003677/O
+        </div>
+        <h1>Contabilidade com <span>precisão</span> e confiança para o seu negócio</h1>
+        <p class="mt-3 mb-4">
+          A Adriano & Albuquerque Organização Contábil LTDA oferece serviços completos de contabilidade,
+          assessoria fiscal e gestão financeira. Situada em Fortaleza/CE, comprometida com a excelência
+          e a conformidade legal da sua empresa.
+        </p>
+        <a href="#contato" class="btn btn-hero me-2">
+          <i class="bi bi-chat-dots me-1"></i>Fale Conosco
+        </a>
+        <a href="#servicos" class="btn btn-outline-light rounded-pill px-4" style="border-color: rgba(255,255,255,0.3);">
+          Nossas Atividades
+        </a>
+      </div>
+      <div class="col-lg-5 d-none d-lg-block text-center">
+        <i class="bi bi-graph-up-arrow" style="font-size: 12rem; color: rgba(201,168,76,0.12);"></i>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS / ATIVIDADES -->
+<section id="servicos" class="py-5">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-divider"></div>
+      <h2 class="section-title">Atividades de Contabilidade</h2>
+      <p class="section-subtitle">Principais serviços conforme CNAE 69.20-6-01</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3">
+        <div class="service-card">
+          <div class="service-icon"><i class="bi bi-journal-text"></i></div>
+          <h5>Escrituração Contábil</h5>
+          <p>Registro completo de todas as movimentações contábeis da sua empresa com precisão e transparência.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="service-card">
+          <div class="service-icon"><i class="bi bi-receipt"></i></div>
+          <h5>Apuração de Tributos</h5>
+          <p>Cálculo e apuração de impostos federais, estaduais e municipais, garantindo conformidade fiscal.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="service-card">
+          <div class="service-icon"><i class="bi bi-file-earmark-bar-graph"></i></div>
+          <h5>Demonstrações Contábeis</h5>
+          <p>Elaboração de balanços patrimoniais, DRE e demais demonstrações exigidas pela legislação.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="service-card">
+          <div class="service-icon"><i class="bi bi-cash-stack"></i></div>
+          <h5>Assessoria Financeira</h5>
+          <p>Consultoria para gestão de fluxo de caixa, planejamento tributário e otimização de resultados.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INFORMAÇÕES -->
+<section id="informacoes" class="info-section py-5">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-divider"></div>
+      <h2 class="section-title">Informações de Registro</h2>
+      <p class="section-subtitle">Dados cadastrais da empresa</p>
+    </div>
+    <div class="row g-4">
+      <!-- Dados Gerais -->
+      <div class="col-md-6 col-lg-3">
+        <div class="info-card">
+          <h5><i class="bi bi-building"></i>Dados Cadastrais</h5>
+          <ul class="info-list">
+            <li><span class="label">CNPJ</span><span class="value">56.089.432/0001-75</span></li>
+            <li><span class="label">Razão Social</span><span class="value">Adriano & Albuquerque Org. Contábil LTDA</span></li>
+            <li><span class="label">Abertura</span><span class="value">25/07/2024</span></li>
+            <li><span class="label">CRC</span><span class="value">CE-003677/O</span></li>
+          </ul>
+        </div>
+      </div>
+      <!-- Natureza e Porte -->
+      <div class="col-md-6 col-lg-3">
+        <div class="info-card">
+          <h5><i class="bi bi-tags"></i>Natureza & Porte</h5>
+          <ul class="info-list">
+            <li><span class="label">Porte</span><span class="value">Micro Empresa</span></li>
+            <li><span class="label">Natureza</span><span class="value">Sociedade Empresária Ltda</span></li>
+            <li><span class="label">MEI</span><span class="value">Não</span></li>
+            <li><span class="label">Capital Social</span><span class="value">R$ 30.000,00</span></li>
+          </ul>
+        </div>
+      </div>
+      <!-- Situação -->
+      <div class="col-md-6 col-lg-3">
+        <div class="info-card">
+          <h5><i class="bi bi-check-circle"></i>Situação</h5>
+          <ul class="info-list">
+            <li><span class="label">Situação</span><span class="value status-active">Ativa</span></li>
+            <li><span class="label">Tipo</span><span class="value">Matriz</span></li>
+            <li><span class="label">Data Situação</span><span class="value">25/07/2024</span></li>
+            <li><span class="label">Atividade</span><span class="value">69.20-6-01</span></li>
+          </ul>
+        </div>
+      </div>
+      <!-- Sócios -->
+      <div class="col-md-6 col-lg-3">
+        <div class="info-card">
+          <h5><i class="bi bi-people"></i>Quadro Societário</h5>
+          <ul class="info-list">
+            <li><span class="label">Sócio-Administrador</span><span class="value">Samilly Albuquerque Juvino</span></li>
+            <li><span class="label">Qualificação</span><span class="value">Sócio-Administrador</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre" class="py-5">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6">
+        <div class="section-divider" style="margin: 0 0 1.5rem 0;"></div>
+        <h2 class="section-title">Sobre a Empresa</h2>
+        <p class="about-text mt-3">
+          A <strong>Adriano & Albuquerque Organização Contábil LTDA</strong>, registrada sob o CNPJ
+          <strong>56.089.432/0001-75</strong>, foi fundada em <strong>25 de julho de 2024</strong> na cidade de
+          <strong>Fortaleza, Ceará</strong>.
+        </p>
+        <p class="about-text">
+          Sua atividade principal, conforme a Receita Federal, é <strong>Atividades de contabilidade</strong>
+          (CNAE 69.20-6-01). Com situação cadastral <strong>Ativa</strong>, a empresa se dedica a oferecer
+          serviços contábeis de qualidade, pautados pela ética, precisão e compromisso com o sucesso
+          de seus clientes.
+        </p>
+        <div class="d-flex gap-4 mt-4">
+          <div class="text-center">
+            <div class="fw-bold fs-3" style="color: var(--gold);">2024</div>
+            <small class="text-muted">Fundação</small>
+          </div>
+          <div class="text-center">
+            <div class="fw-bold fs-3" style="color: var(--gold);">CE</div>
+            <small class="text-muted">Fortaleza</small>
+          </div>
+          <div class="text-center">
+            <div class="fw-bold fs-3" style="color: var(--gold);">Ativa</div>
+            <small class="text-muted">Situação</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 text-center mt-4 mt-lg-0">
+        <i class="bi bi-briefcase" style="font-size: 10rem; color: var(--accent-light);"></i>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato" class="contact-section">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-divider"></div>
+      <h2 class="section-title">Entre em Contato</h2>
+      <p class="section-subtitle">Estamos prontos para atender você</p>
+    </div>
+    <div class="row g-4 mb-5">
+      <div class="col-md-4">
+        <div class="contact-card">
+          <i class="bi bi-telephone"></i>
+          <h6>Telefone / WhatsApp</h6>
+          <a href="tel:+5585991872555">(85) 99187-2555</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="contact-card">
+          <i class="bi bi-envelope"></i>
+          <h6>E-mail</h6>
+          <a href="mailto:nubia@acessoriaideialempressa.online">nubia@acessoriaideialempressa.online</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="contact-card">
+          <i class="bi bi-geo-alt"></i>
+          <h6>Endereço</h6>
+          <p>Av. Washington Soares, 55 — 317 Sl 01<br>Edson Queiroz, Fortaleza — CE<br>CEP: 60811-341</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAPA -->
+    <div class="row">
+      <div class="col-12">
+        <div class="map-wrapper">
+          <iframe
+            src="https://www.google.com/maps?q=Avenida+Washington+Soares,+55,+Edson+Queiroz,+Fortaleza,+CE,+60811-341&output=embed"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="text-center">
+  <div class="container">
+    <p class="mb-1">
+      <strong>Adriano & Albuquerque Organização Contábil LTDA</strong> — CNPJ: 56.089.432/0001-75
+    </p>
+    <p class="mb-0">
+      CRC: CE-003677/O | Av. Washington Soares, 55 — 317 Sl 01, Edson Queiroz, Fortaleza/CE
+    </p>
+  </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
